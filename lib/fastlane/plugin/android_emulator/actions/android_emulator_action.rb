@@ -12,16 +12,17 @@ module Fastlane
         sdk_dir = params[:sdk_dir]
         adb = "#{sdk_dir}/platform-tools/adb"
 
+        UI.message("Version 0.1.5")
         UI.message("Stopping emulator")
         system("#{adb} emu kill > /dev/null 2>&1 &")
         sleep(2)
 
-        UI.message("Creating new emulator")
-        FastlaneCore::CommandExecutor.execute(
-          command: "#{sdk_dir}/tools/bin/avdmanager create avd -n '#{params[:name]}' -f -k '#{params[:package]}' -d 'Nexus 5'",
-          print_all: true,
-          print_command: false
-        )
+        # UI.message("Creating new emulator")
+        # FastlaneCore::CommandExecutor.execute(
+        #   command: "#{sdk_dir}/tools/bin/avdmanager create avd -n '#{params[:name]}' -f -k '#{params[:package]}' -d 'Nexus 5'",
+        #   print_all: true,
+        #   print_command: false
+        # )
 
         UI.message("Override configuration")
         open("#{Dir.home}/.android/avd/#{params[:name]}.avd/config.ini", 'a') { |f|
