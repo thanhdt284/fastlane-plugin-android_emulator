@@ -9,6 +9,7 @@ module Fastlane
 
     class AndroidEmulatorAction < Action
       def self.run(params)
+        puts "Lucio"
         sdk_dir = params[:sdk_dir]
         adb = "#{sdk_dir}/platform-tools/adb"
 
