@@ -27,10 +27,30 @@ module Fastlane
 
         UI.message("Override configuration")
         open("#{Dir.home}/.android/avd/#{params[:name]}.avd/config.ini", 'a') { |f|
+          f << "PlayStore.enabled=true\n"
+          f << "disk.dataPartition.size=2G\n"
+          f << "fastboot.forceColdBoot=no\n"
+          f << "hw.cpu.ncore=4\n"
+          f << "hw.device.name=Nexus 5X\n"
+          f << "hw.gpu.enabled=yes\n"
+          f << "hw.initialOrientation=Portrait\n"
+          f << "hw.keyboard=yes\n"
+          f << "hw.lcd.density=420\n"
+          f << "hw.ramSize=1536\n"
+          f << "hw.sdCard=yes\n"
+          f << "runtime.network.latency=none\n"
+          f << "runtime.network.speed=full\n"
+          f << "sdcard.size=100M\n"
+          f << "showDeviceFrame=no\n"
+          f << "tag.display=Google Play\n"
+          f << "tag.id=google_apis_playstore\n"
+          f << "vm.heapSize=256\n"
           f << "hw.gpu.mode=auto\n"
           f << "hw.gpu.enabled=yes\n"
           f << "skin.dynamic=yes\n"
           f << "skin.name=1080x1920\n"
+          f << "skin.path=_no_skin\n"
+          f << "skin.path.backup=_no_skin\n"
         }
 
         # Verify HAXM installed on mac
